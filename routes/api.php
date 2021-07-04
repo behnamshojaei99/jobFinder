@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\JobController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,8 @@ Route::group(['middleware'=> ['auth:sanctum']], function(){
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
+Route::get('/getJobs', [JobController::class, 'getAllJob']);
+Route::get('/getLatestJobs', [JobController::class, 'getLatestJob']);
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
